@@ -55,22 +55,29 @@ pip install -r requirements.txt
 
 # 4. 啟動 Django 伺服器
 python manage.py runserver
-📦 專案結構說明
-資料夾 => 功能簡述
-dashboard => Django 後端主程式
-dashboardapp =>	Django Views / Models / Routing
-template => 前端 HTML 模板頁面
-static => CSS / 圖片資源
-data => 模型權重檔案（使用 Git LFS 管理）
-requirements.txt => Python 套件清單
-manage.py	=> Django 主程式入口
+```
+
+## 📦 專案結構說明
+
+| 資料夾 / 檔案         | 功能簡述                            |
+|----------------------|-------------------------------------|
+| `dashboard/`         | Django 後端主程式                   |
+| `dashboardapp/`      | Django Views / Models / Routing     |
+| `template/`          | 前端 HTML 模板頁面                  |
+| `static/`            | CSS / 圖片資源                       |
+| `data/`              | 模型權重檔案（使用 Git LFS 管理）    |
+| `requirements.txt`   | Python 套件清單                      |
+| `manage.py`          | Django 主程式入口                    |
+
 
 🧪 實驗結果摘要
-股票	實驗組年投報率	對照組年投報率
-聯發科	62.04%	41.40%
-鴻海	28.44%	26.88%
-台積電	27.12%	28.80%
-日月光	37.20%	31.20%
+| 股票   | 實驗組年投報率 | 對照組年投報率 |
+|--------|----------------|----------------|
+| 聯發科 | 62.04%         | 41.40%         |
+| 鴻海   | 28.44%         | 26.88%         |
+| 台積電 | 27.12%         | 28.80%         |
+| 日月光 | 37.20%         | 31.20%         |
+
 
 📈 平均年投報率提升 20.67%，高於台股大盤表現。
 
