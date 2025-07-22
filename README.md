@@ -3,7 +3,7 @@
 利用新聞標題進行股價漲跌預測的 NLP 系統  
 *A Django-based NLP platform for forecasting stock trends and simulating investment strategies.*
 
-👉 [點我觀看首頁介面影片](https://drive.google.com/file/d/1znLUg5sbLUwWPSjtNGznw1GR07FSxsUM/view?usp=drive_link)
+👉 [點我觀看系統介面影片](https://drive.google.com/file/d/1znLUg5sbLUwWPSjtNGznw1GR07FSxsUM/view?usp=drive_link)
 
 ---
 
