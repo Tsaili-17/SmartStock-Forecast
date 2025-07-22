@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .btn {
+      font-size: 18px; 
+      display: block;
+      margin: 0 auto;
+      background-color: #fff2cc;  /* 指定按鈕顏色 */
+      color: black;  /* 可以設定文字顏色為黑色，讓其與背景顏色有對比 */
+    }
+</style>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票新聞爬蟲</title>
+</head>
+<body>
+    <br>
+    <h1 style="text-align: center">Enter the Stock Information</h1>
+    <hr>
+
+    <!-- {% if success %}
+        <p style="color: green;">操作成功!</p>
+    {% endif %} -->
+    <br>
+    <form method="post", style="text-align: center">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <button type="submit" class="btn btn-primary">Start to Crawl...</button>
+        <!-- {% if success %}
+            <a href="{% url 'datatable' %}" class="btn btn-primary" style="margin-left: 10px;">跳轉到 DataTable</a>
+        {% endif %} -->
+    </form>
+</body>
+</html>
+{% endblock %}

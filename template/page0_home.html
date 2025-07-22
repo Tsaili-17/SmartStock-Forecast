@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}DashBoard{% endblock %}
+{% block content %}
+<style>
+    .btn {
+      font-size: 18px; 
+      display: block;
+      margin: 0 auto;
+      background-color: #fff2cc;  /* 指定按鈕顏色 */
+      color: black;  /* 可以設定文字顏色為黑色，讓其與背景顏色有對比 */
+    }
+</style>
+
+<br>
+<h1 style="text-align: center">SmartStock Forecast</h1>
+<hr>
+
+<br>
+<p style="text-align: center">This is a stock prediction system based on Natural Language Processing. </p>
+<p style="text-align: center">We automate crawlers to obtain news and stock price then perform data pre-processing, model training, prediction and other processes.</p>
+<p style="text-align: center">We hope it can help you better understand the stock market and provide a better strategy!!</p>
+<p style="text-align: center">Developers: Cindy, Kelly, Judy</p>
+<br>
+
+<form action="{% url 'upload' %}">
+  <input type="submit" class="btn btn-primary" value="Get ready to start!!!">
+</form>
+
+<br>
+<hr>
+<p style="text-align: center">Disclaimer</p>
+<p style="text-align: center">
+  The stock predictions provided by this system are for reference only and should not be used as the sole basis for investment decisions.<br>
+  The stock market involves high risks, and we advise you to carefully assess and consult with a professional financial advisor.<br>
+  We are not responsible for any losses resulting from the use of this system.
+</p>
+<hr>
+
+{% endblock %}
+

@@ -1,0 +1,132 @@
+/* ---------------------------------------
+ * Datatable
+ */
+
+/* fixes margins so data isn't cut off at table edges */
+.dbc .dash-table-container .row {
+  display: block !important;
+  margin: 0;
+}
+
+/* fixes  when the table dropdown doesn't drop down */
+.dbc .Select-menu-outer {
+  display: block !important;
+}
+
+.dash-table-container .dropdown {
+  position: static;
+}
+
+/*
+   *  sort arrow and delete icons in the DataTable header - changes pink color
+   *  these icons appear when the table is sortable and/or columns are deletable
+   */
+.dbc .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
+  --accent: var(--bs-primary) !important;
+  --hover: none !important;
+  font-family: var(--bs-font-sans-serif);
+}
+
+.dbc input.dash-filter--case--sensitive {
+  border-color: #fff2cc !important;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 2px;
+  color: var(--bs-primary) !important;
+}
+
+/* pagination buttons - this removes the default pink hover */
+.dbc .last-page:hover,
+.previous-page:hover,
+.first-page:hover,
+.next-page:hover {
+  color: var(--bs-primary) !important;
+}
+
+
+/* table details */
+body .dbc .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td {
+  background-color: #fff2cc;
+  color: var(--bs-body-color);
+  border-color: rgba(100, 100, 100, 0.4) !important;
+}
+
+/* on hover highlight entire row
+  .dash-spreadsheet tr:hover td.dash-cell {
+              border-color: rgba(100, 100, 100, 0.4) !important;
+              border-width: 0.5px !important;
+              background-color: rgba(var(--bs-primary-rgb), 0.2) !important;
+  
+           }
+  */
+
+/* table header */
+body .dbc .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
+  background-color: #fff2cc;
+  color: var(--bs-body-color);
+  border-color: rgba(100, 100, 100, 0.4) !important;
+}
+
+
+/* filter row in the header */
+.dbc .dash-spreadsheet .dash-filter {
+  font-family: var(--bs-font-family-sans-serif);
+  background-color: #fff2cc;
+  color: var(--bs-body-color);
+  --border: var(--bs-gray);
+}
+
+/* tooltips  */
+.dbc .dash-table-tooltip {
+  background-color: #fff2cc !important;
+  color: var(--bs-body-color);
+  width: fit-content;
+  /* max and min width are both set to 300px in the dash stylesheet. Override them with your own definitions. */
+  max-width: 300px;
+  min-width: unset;
+}
+
+/* pagination */
+.dbc .dash-table-container .previous-next-container .page-number .current-page-container .current-page-shadow {
+  background-color: transparent;
+  color: var(--bs-body-color) !important;
+}
+
+.dbc .dash-table-container .previous-next-container .page-number .current-page-container input.current-page {
+  background-color: transparent;
+}
+
+.dbc .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
+  border-collapse: inherit;
+  border-spacing: unset;
+}
+
+/* active cell */
+.dbc .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td.focused {
+  background-color: #fff2cc !important;
+  outline: 1px solid var(--bs-primary);
+}
+
+/* active cell when cell is  editable */
+.dbc .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner input:not([type=radio]):not([type=checkbox]) {
+  background-color: transparent !important;
+}
+
+/* selected cells */
+.dbc .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td.cell--selected {
+  background-color: #fff2cc !important;
+}
+
+/*  dropdown inside datatable */
+.dbc .dash-table-container .dash-spreadsheet .Select-menu-outer {
+  background-color: #fff2cc;
+  border-color: rgba(100, 100, 100, 0.4)
+}
+
+.dbc .dash-table-container .dash-spreadsheet .Select-option:hover {
+  background-color: #fff2cc;
+}
+
+.dbc .dash-table-container .dash-spreadsheet .Select-option {
+  background-color: #fff2cc;
+}

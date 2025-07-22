@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<style>
+    .alert {
+        position: relative;
+    }
+    .close {
+        position: absolute;
+        right: 5px;
+        font-size: 22px;
+        opacity: 0.8;
+        top:0px;
+        color:white;
+        background-color: transparent;
+        border: 0;
+    }
+    
+    label {
+        font-size:21px; 
+        color: #5c5b5b;
+    }
+
+    .btn {
+      font-size: 18px; 
+      display: block;
+      margin: 0 auto;
+      background-color: #fff2cc;  /* 指定按鈕顏色 */
+      color: black;  /* 可以設定文字顏色為黑色，讓其與背景顏色有對比 */
+    }
+    img {
+            display: block; /* 使圖片顯示為區塊元素 */
+            margin: 0 auto; /* 圖片置中 */
+            max-width: 80%; /* 限制圖片最大寬度 */
+            height: auto; /* 自動調整高度 */
+    }
+
+</style>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Warning!</strong> {{ message|safe }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">x</span>
+    </button>
+</div>
+{% endfor %}
+{% endif %}
+<h1 style="text-align: center">Data Visualization</h1>
+<hr>
+{%if success %}
+    <p style="color: green; text-align: center">Data Upload Successfully!</p>
+    <form method="POST" action="/visualization" style="text-align: center">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary" name="data_upload_button">Visualize the News and the Stock Price</button>
+    </form>
+{% endif %}
+{% if display %}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization</title>
+</head>
+<body>
+    <h3 style="text-align: center">Word Cloud for Label "1"</h3>
+    <!-- 顯示圖片 -->
+    <div>
+        <img src="{{ wordcloud_image_url }}" alt="Word Cloud">
+    </div>
+    <br>
+    <hr>
+    <h3 style="text-align: center">Open Price Trend Chart</h3>
+    <div>
+        <img src="{{ openprice_image_url }}" alt="Open Price">
+    </div>
+    <br>
+    <hr>
+    <form method="POST" action="/datatable" style="text-align: center">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary" name="data_upload_button">Start Data Preprocessing</button>
+    </form>
+</body>
+</html>
+{% endif %}
+{% endblock %}

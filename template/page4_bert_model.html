@@ -1,0 +1,63 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <br>
+    <h1 style="text-align: center">模型評估結果</h1>
+    <hr>
+    <style>
+        .results-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .result-box {
+            width: 30%;
+            text-align: center;
+        }
+        .result-box img {
+            max-width: 100%;
+            height: auto;
+        }
+        .container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>    
+    <div class="container">
+        <ul>
+            <li>訓練集準確度: {{ train_accuracy }}</li>
+            <li>驗證集準確度: {{ valid_accuracy }}</li>
+            <li>測試集準確度: {{ test_accuracy }}</li>
+        </ul>
+    </div>
+    
+    <div class="container">
+        <div class="results-container">
+            <div class="result-box">
+                <h3>訓練集</h3>
+                <img src="{% static 'images/Confusion_Matrix_Train.png' %}" alt="Confusion Matrix - Train">
+                <p>準確度: {{ train_accuracy }}</p>
+            </div>
+            <div class="result-box">
+                <h3>驗證集</h3>
+                <img src="{% static 'images/Confusion_Matrix_Validation.png' %}" alt="Confusion Matrix - Validation">
+                <p>準確度: {{ valid_accuracy }}</p>
+            </div>
+            <div class="result-box">
+                <h3>測試集</h3>
+                <img src="{% static 'images/Confusion_Matrix_Test.png' %}" alt="Confusion Matrix - Test">
+                <p>準確度: {{ test_accuracy }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+{% endblock %}

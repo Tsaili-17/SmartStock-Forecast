@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+
+<style>
+    .alert {
+        position: relative;
+    }
+
+    .close {
+        position: absolute;
+        right: 5px;
+        font-size: 22px;
+        opacity: 0.8;
+        top: 0px;
+        color: white;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .btn {
+      font-size: 18px; 
+      display: block;
+      margin: 0 auto;
+      background-color: #fff2cc;  /* 指定按鈕顏色 */
+      color: black;  /* 可以設定文字顏色為黑色，讓其與背景顏色有對比 */
+    }
+</style>
+<br>
+<h1 style="text-align:center">Split Your Dataset then Train the Model</h1>
+<hr>
+
+<form method="post" action="{% url 'page3_train_test_comparison' %}" style="text-align: center">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="split_method">Your Splitting Method: </label>
+        <select name="split_method" id="split_method" class="form-control">
+            <!-- <option value="uniform_split">Split Uniformly</option> -->
+            <!-- <option value="uniform_rolling_split">均勻滾動切分</option> -->
+            <option value="rolling_split">Rolling Split</option>
+        </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Split then train...</button>
+</form>
+
+<!-- <form method="POST" action="{% url 'page4_bert_model' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-secondary">Train BERT</button>
+</form> -->
+
+
+<script>
+    function startTraining() {
+        // 创建一个隐藏的表单
+        var form = document.createElement('form');
+        form.method = 'post';
+        form.action = "{% url 'page4_bert_model' %}";
+    
+        // 添加 CSRF token
+        var csrfToken = document.querySelector('[name="csrfmiddlewaretoken"]').value;
+        var inputCsrf = document.createElement('input');
+        inputCsrf.type = 'hidden';
+        inputCsrf.name = 'csrfmiddlewaretoken';
+        inputCsrf.value = csrfToken;
+        form.appendChild(inputCsrf);
+    
+        // 添加切分方法
+        var splitMethod = document.getElementById('split_method').value;
+        var inputSplitMethod = document.createElement('input');
+        inputSplitMethod.type = 'hidden';
+        inputSplitMethod.name = 'split_method';
+        inputSplitMethod.value = splitMethod;
+        form.appendChild(inputSplitMethod);
+    
+        // 提交表单
+        document.body.appendChild(form);
+        form.submit();
+    }
+    </script>
+
+<!-- <h2>Select the Dataset to Display</h2>
+<form method="get" action="{% url 'page3_train_test_comparison' %}">
+    <label for="current_data">Display:</label>
+    <select name="current_data" id="current_data" onchange="this.form.submit()">
+        <option value="train" {% if current_data == 'train' %}selected{% endif %}>Training Set</option>
+        <option value="test" {% if current_data == 'test' %}selected{% endif %}>Testing Set</option>
+    </select>
+</form> -->
+
+<!-- <hr> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train/Test Data</title>
+    <style>
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .data-table th {
+            background-color: #f4f4f4;
+        }
+        .scrollable-table {
+            max-height: 500px; /* Adjust height as needed */
+            overflow-y: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="scrollable-table">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    {% for column in columns %}
+                    <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in selected_data %}
+                <tr>
+                    {% for value in row.values %}
+                    <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FinalResults</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* 設定字型 */
+            margin: 20px; /* 設定頁面邊距 */
+        }
+        h1 {
+            text-align: center; /* 標題置中 */
+        }
+        h2 {
+            text-align: center; /* 子標題置中 */
+        }
+        h3 {
+            text-align: center; /* 子標題置中 */
+        }
+        h4 {
+            text-align: center; /* 子標題置中 */
+        }
+        img {
+            display: block; /* 使圖片顯示為區塊元素 */
+            margin: 0 auto; /* 圖片置中 */
+            max-width: 80%; /* 限制圖片最大寬度 */
+            height: auto; /* 自動調整高度 */
+        }
+        table {
+            width: 100%; /* 設定表格寬度為100% */
+            border-collapse: collapse; /* 合併邊框 */
+            margin-top: 20px; /* 表格上方間距 */
+        }
+        th, td {
+            padding: 15px; /* 單元格內邊距 */
+            text-align: center; /* 文字置中 */
+            border: 1px solid rgba(100, 100, 100, 0.4); /* 單元格邊框 */
+        }
+        th {
+            background-color: #fff2cc; /* 標題背景色 */
+            color: #333; /* 文字顏色 */
+        }
+    </style>
+</head>
+<body>
+    <h1>Final Results</h1>
+    <hr>
+    <h3>Monthly Return Comparison</h3>
+    
+    <!-- 顯示傳遞進來的圖表 -->
+    <img src="{{ chart_path }}" alt="Monthly Return Comparison Chart">
+    <hr>
+    <h2>Predicted Trend for the Next Day's Stock Price: <span style="font-size: 1.5em; font-weight: bold; background-color: #ffff00;">{{ show }}</span></h2>
+    <table>
+        <tr>
+            <th>next_ans</th>
+            <th>avg3_ans</th>
+            <th>avg5_ans</th>
+        </tr>
+        <tr>
+            <td>{{ show }}</td>
+            <td>{{ show3 }}</td>
+            <td>{{ show5 }}</td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+    <h3>Comparison of Two Strategies</h3>
+    <table>
+        <tr>
+            <th>Strategy</th>
+            <th>Number of profitable trades</th>
+            <th>Volatility of returns</th>
+            <th>Annual return rate</th>
+        </tr>
+        {% for strategy, metrics in comparison.items %}
+        <tr>
+            <td>{{ strategy }}</td>
+            <td>{{ metrics.Number_of_profitable_trades }}</td>
+            <td>{{ metrics.Volatility_of_returns }}%</td>
+            <td>{{ metrics.Annual_return_rate }}%</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    <h4>The average annual return of strategy 2 is <span style="font-size: 1.5em; font-weight: bold;">{{ earning }}</span> times of strategy 1.</h4>
+
+    
+</body>
+</html>
+{% endblock %}
+

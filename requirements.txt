@@ -1,0 +1,17 @@
+Django
+plotly
+numpy
+pandas
+seaborn
+matplotlib
+xgboost
+mlxtend
+imbalanced-learn
+optuna
+lightgbm
+scikit-optimize
+scikit-learn
+category_encoders
+transformers
+torch
+yfinance

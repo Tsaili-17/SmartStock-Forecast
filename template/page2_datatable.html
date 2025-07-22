@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .btn {
+      font-size: 18px; 
+      display: block;
+      margin: 0 auto;
+      background-color: #fff2cc;  /* 指定按鈕顏色 */
+      color: black;  /* 可以設定文字顏色為黑色，讓其與背景顏色有對比 */
+    }
+</style>
+
+<!-- {%if success %}
+    <p style="color: green; text-align: center">Data Upload Successful!</p>
+    <form method="POST" action="/datatable" style="text-align: center">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary" name="data_upload_button">Start Data Preprocessing</button>
+    </form>
+{% endif %} -->
+
+
+{% if selected_flag == 'False' %}
+    <br>
+    <h1 style="text-align: center">Confirm Target Column</h1>
+    <hr>
+    <br>
+    <form method="POST" action="/datatable" style="text-align: center">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="target_slt">Target Column</label>
+            <select id="target_slt" name="target_slt" class="form-control" required>
+                {% for col in target_options %}
+                    <option value="{{ col }}">{{ col }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <input type="submit" value="Confirm target" class="btn btn-primary" name="target_confirm_button">
+    </form>
+{% endif %}
+
+{% endblock %}

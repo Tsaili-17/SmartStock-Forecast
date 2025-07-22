@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media
+*.sqlite3
+
+# Jupyter
+.ipynb_checkpoints
+
+# Environment
+.env
+venv/
+env/
+
+# PyTorch model
+*.pth
+
+# VSCode
+.vscode/
